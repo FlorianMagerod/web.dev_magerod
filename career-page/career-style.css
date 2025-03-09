@@ -1,0 +1,747 @@
+
+  /* Base styles */
+  :root {
+    --primary-color: #165a95;
+    --secondary-color: #ffe884;
+    --text-color: #000;
+    --text-light: #868686;
+    --background-light: #f4f4f4;
+    --background-yellow: rgba(255, 232, 132, 0.84);
+    --background-gray: rgba(228, 233, 237, 1);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, -apple-system, Helvetica, sans-serif;
+    background-color: var(--background-light);
+  }
+
+  .career-page {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Hero Section */
+  .hero {
+    /*min-height: 946px;*/
+    width: 100%;
+    padding-top: 210px;
+    /*padding-bottom: 49px;*/
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(253, 234, 150) 100%);
+  }
+
+  .hero-container {
+    display: flex;
+    width: 100%;
+    padding: 0 70px 0 31px;
+    align-items: center;
+    gap: 22px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-content {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 469px;
+  }
+
+  .hero-tagline {
+    color: var(--primary-color);
+    font-size: clamp(18px, 2.5vw, 22px);
+    margin: 0;
+  }
+
+  .hero-heading {
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 800;
+    /*line-height: 66px; /* Alternativ: ein unitless Wert (z. B. 1.2) */
+    margin: 24px 0 0;
+  }
+
+  .hero-text {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 30px;
+    margin: 24px 0 0;
+  }
+
+  .button-label {
+    font-size: clamp(14px, 1.2vw, 18px);
+    font-weight: 500;
+    color: white;
+  }
+
+  .hero-images {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /*flex: 1;*/
+  }
+
+  .hero-image-small {
+    width: 193px;
+    aspect-ratio: 1.07;
+    object-fit: contain;
+  }
+
+  .hero-image-large {
+    width: 573px;
+    aspect-ratio: 0.89;
+    object-fit: contain;
+    padding: 10px;
+  }
+
+  /* Benefits Section */
+  .benefits {
+    background-color: var(--background-yellow);
+    /*min-height: 670px;*/
+    padding: 73px 60px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /*.benefits-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+  }*/
+
+  .benefits-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 40px;             /* Abstand zwischen Textblock und Karten */
+    flex-wrap: wrap;
+    align-items: flex-start; /* Karten und Text oben ausrichten */
+    justify-content: space-between;
+  }
+
+  /*.benefits-header {
+    flex: 1;
+    max-width: 588px;
+    max-height: 300px;
+  }*/
+
+  .benefits-header {
+    flex: 1 1 250px;    /* Nimmt etwas Platz ein, mindestens 300px */
+    max-width: 600px;   /* Optional: maximale Breite für den Textblock */
+  }
+
+  .section-tagline {
+    color: var(--primary-color);
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 400;
+    margin: 0;
+    font-family: "Roboto";
+  }
+
+  .jobs-header .section-tagline {
+    color: #ffe884;
+  }
+
+  .section-heading {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 550;
+    /*line-height: 46px;*/
+    margin: 10px 0 0;
+    color: #000;
+    font-family: "Roboto";
+  }
+
+  .jobs-header .section-heading {
+    color: white;
+  }
+
+  .section-description {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 28px;
+    margin: 10px 0 0;
+  }
+
+  .values-header .section-heading {
+    color: #165a95;
+  }
+
+  /*.benefits-grid {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    min-width: 240px;
+    max-width: 600px;
+  }*/
+
+  .benefits-grid {
+    flex: 1 1 400px;    /* Der zweite „Block“ nimmt den übrigen Platz ein */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;          /* Abstand zwischen den einzelnen Karten */
+    max-width: 600px;   /* Optional: um zu verhindern, dass es zu breit wird */
+  }
+
+  /*.benefit-card {
+    flex: 1;
+    max-width: 300px;
+    max-height: 262px;
+    min-width: 300px;
+    min-height: 200px;
+  }*/
+
+  .benefit-card {
+    flex: 1 1 calc(50% - 20px); /* Zwei Karten pro Zeile, Platz für Lücken */
+    min-width: 280px;           /* Untere Breite, damit sie nicht zu schmal werden */
+    max-width: 300px;           /* Optional: Begrenzung der max. Kartengröße */
+    /* Weitere Styles wie Höhe, Padding etc. bleiben unverändert */
+  }
+
+  .benefit-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+  }
+
+  .benefit-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 600;
+    margin: 10px 0;
+    color: #000;
+    font-family: "Roboto";
+  }
+
+  .benefit-description {
+    font-size: clamp(16px, 2.5vw, 18px);
+    line-height: 30px;
+    margin: 10px 0;
+  }
+
+  /* Values Section */
+  .values {
+    background-color: var(--background-light);
+    padding: 114px 110px;
+    text-align: center;
+  }
+
+  .values-container {
+    max-width: 1220px;
+    margin: 0 auto;
+  }
+
+  .values-header {
+    max-width: 614px;
+    margin: 0 auto;
+  }
+
+  .values-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 48px;
+    justify-content: center;
+  }
+
+  .value-card {
+    position: relative;
+    width: 310px;
+    min-height: 319px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  .value-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .value-title {
+    position: relative;
+    color: var(--secondary-color);
+    font-size: clamp(20px, 3vw, 24px);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .value-description {
+    position: relative;
+    color: var(--background-light);
+    font-size: clamp(16px, 2.5vw, 18px);
+    line-height: 2;
+    margin: 22px 0 0;
+  }
+
+  /* Testimonials Section */
+  .testimonials {
+    background-color: var(--background-gray);
+    /*min-height: 982px;*/
+    padding: 40px 69px 40px;
+  }
+
+  .testimonials-container {
+    display: flex;
+    gap: 72px;
+    justify-content: center;
+    max-width: 1302px;
+    margin: 0 auto;
+  }
+
+  .testimonials-content {
+    flex: 1;
+    max-width: 40%;
+  }
+
+  .testimonials-images {
+    display: flex;
+    align-items: top;
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+
+  .team-photos {
+    width: 272px;
+    aspect-ratio: 3.4;
+    object-fit: contain;
+    margin-left: -15px;
+  }
+
+  .more-photos {
+    font-family: Manrope, sans-serif;
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 800;
+    line-height: 30px;
+    margin: 0;
+  }
+
+  .testimonial-cards {
+    flex: 1;
+    max-width: 745px;
+  }
+
+  .testimonial-card {
+    display: flex;
+    gap: 22px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 14px 10px 27px rgba(0, 0, 0, 0.08);
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .testimonial-image-container {
+    position: relative;
+    width: 282px;
+    /*padding-top: 68px;*/
+  }
+
+  .testimonial-image {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 257px;
+    border-radius: 0 140px 54px 0;
+    object-fit: contain;
+  }
+
+  .testimonial-content {
+    flex: 1;
+    padding: 24px 13px 24px 0;
+  }
+
+  .testimonial-title {
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 600;
+    margin: 0;
+    font-family: "Roboto";
+    color: #000;
+  }
+
+  .testimonial-text {
+    color: var(--text-light);
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 28px;
+    margin: 8px 0 24px;
+  }
+
+  .rating-image {
+    width: 265px;
+    aspect-ratio: 5.18;
+    object-fit: contain;
+  }
+
+  /* Application Process Section */
+  .application-process {
+    background-color: var(--background-light);
+    padding: 80px 84px;
+  }
+
+  .process-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .process-header {
+    max-width: 625px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .process-steps {
+    display: flex;
+    gap: 28px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+
+  .steps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    max-width: 737px;
+  }
+
+  .step-card {
+    flex: 1;
+    min-width: 240px;
+    min-height: 284px;
+    padding: 24px 30px;
+    border-radius: 15px;
+    border: 1px solid #d4d2e3;
+    box-shadow: 0 8px 28px rgba(20, 20, 43, 0.1);
+  }
+
+  .step-number {
+    color: #165a95;
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+  }
+
+  .last-step-number {
+    color: #000;
+    font-family: "Roboto Slab", serif;
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 800;
+  }
+
+  .step-title {
+    font-size: clamp(20px, 3vw, 24px);
+    font-weight: 700;
+    margin: 8px 0;
+    color: #000;
+  }
+
+  .step-description {
+    font-size: clamp(16px, 2.5vw, 18px);
+    line-height: 30px;
+    margin: 8px 0;
+    color: #000;
+  }
+
+  .final-step {
+    position: relative;
+    flex: 1;
+    min-width: 240px;
+    /*min-height: 594px;*/
+    padding: 339px 30px 19px;
+    color: var(--text-color);
+    background-image: url('https://www.oschinski-immobilien.de/wp-content/uploads/Gradient-pantone-3.png');
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 28px rgba(20, 20, 43, 0.1);
+  }
+
+  .final-step-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Jobs Section */
+  .jobs {
+    padding: 40px 0;
+    min-height: 1816px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #165a95;
+  }
+
+  .jobs-wrapper {
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .jobs-header {
+    text-align: center;
+    max-width: 585px;
+  }
+
+  .job-categories {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .category-title {
+    font-size: clamp(24px, 3vw, 30px);
+    font-weight: 400;
+    margin: 0;
+    padding: 16px 24px;
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    font-family: "Roboto";
+  }
+
+  .job-listings {
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .job-listing {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 14px 42px rgba(20, 20, 43, 0.14);
+    padding: 32px 24px;
+    margin-bottom: 16px;
+  }
+
+  .job-title {
+    font-size: clamp(30px, 3vw, 36px);
+    font-weight: 600;
+    margin: 0;
+    font-family: "Roboto";
+  }
+
+  .job-description {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 28px;
+    margin: 8px 0 0;
+  }
+
+  .job-tags {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    align-items: center;
+  }
+
+  .tag {
+    font-size: clamp(14px, 2.5vw, 18px);
+    line-height: 2;
+    padding: 0 16px;
+    color: #165a95;
+    background-color: #badefd;
+    border-radius: 24px;
+  }
+
+  /* Buttons */
+  .primary-button {
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background-color: #165a95;
+    color: #f4f4f4;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 25px;
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 24px;
+  }
+
+  .primary-button:hover {
+    background-color: #124c7f;
+    transform: scale(1.05);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .button-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .job-tags svg:hover{
+    transform: translateX(5px);
+    stroke: #165a95;
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+
+  .hover_state:hover{
+    transform: scale(1.07);
+    transition: 0.3s;
+  }
+
+
+  @media (max-width:1068px) {
+    .hero-container{
+      flex-direction: column;
+    }
+    .hero-images {
+      flex-direction: column;
+    }
+    .hero-image-small {
+      rotate: 45deg;
+      scale: 0.8;
+    }
+    .testimonials-container {
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
+  /* Media Queries */
+  @media (max-width: 991px) {
+    .hero {
+      /*max-width: 90%;*/
+      padding-top: 100px;
+      /*margin: auto;*/
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-container {
+      padding: 0 20px;
+      max-width: 75%;
+      gap: 0;
+    }
+
+    .hero-images{
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-image-small{
+      rotate: 45deg;
+      scale: 0.7;
+    }
+
+    /* Layout-Anpassungen bleiben erhalten – die Schriftgrößen regelt jetzt clamp */
+    .hero-image-large {
+      max-width: 100%;
+    }
+
+    .benefits {
+      padding: 73px 20px;
+    }
+
+    /*.benefits-container{
+      flex-direction: column;
+      align-items: start;
+    }*/
+
+    .benefits-container {
+      flex-direction: column;   /* Alles untereinander anordnen */
+      align-items: flex-start;
+      gap: 20px;                /* Weniger Lücke nötig? Passe es nach Geschmack an */
+    }
+
+    .benefits-container,
+    .benefits-header,
+    .benefits-grid {
+      max-width: 100%;
+    }
+
+    .benefits-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .benefit-card {
+      flex: 1 1 100%;    /* Jede Karte nimmt die volle Breite ein */
+      max-width: 100%;
+    }
+
+    .values {
+      padding: 20px 20px;
+    }
+
+    .values-grid {
+      margin-top: 40px;
+    }
+
+    .value-card {
+      padding: 20px;
+      padding-top: 100px;
+    }
+
+    .testimonials {
+      padding: 36px 20px 20px;
+    }
+
+    .testimonials-container,
+    .testimonials-content,
+    .testimonial-cards {
+      max-width: 100%;
+    }
+
+    .testimonials-container{
+      max-width: 90%;
+    }
+
+    .testimonial-card {
+      flex-direction: column;
+      gap: 0px;
+    }
+
+    .testimonial-image-container {
+      width: 100%;
+      height: 230px;
+      padding-top: 40px;
+    }
+
+    .testimonial-content{
+      padding: 24px 24px;
+    }
+
+    .application-process {
+      padding: 80px 20px;
+    }
+
+    .process-steps,
+    .steps-grid {
+      max-width: 100%;
+    }
+
+    .step-card {
+      padding: 20px;
+    }
+
+    .jobs-wrapper {
+      max-width: 90%;
+    }
+
+    .job-tags{
+      flex-wrap: wrap;
+      gap: 20px 40px;
+    }
+
+    .tag_wrapper{
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+  }
