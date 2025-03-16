@@ -18,7 +18,21 @@ body {
 
 .career-page {
     width: 100%;
-    overflow: hidden;
+    /**overflow: hidden;*/
+}
+
+.sticky-container {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sticky-item {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    padding: 20px 0;
+    width: 100%;
+    box-shadow: 14px 10px 27px rgba(0, 0, 0, 0.1), -14px 10px 27px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
@@ -240,6 +254,8 @@ body {
     background-color: var(--background-light);
     padding: 114px 110px;
     text-align: center;
+    position: sticky;
+
 }
 
 .values-container {

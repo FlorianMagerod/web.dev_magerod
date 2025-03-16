@@ -10,6 +10,8 @@
 
 <body>
     <main class="career-page">
+        <div class="sticky-container">
+        <div class="hero+benefit-section sticky-item">
         <section class="hero">
             <div class="hero-container">
                 <article class="hero-content">
@@ -110,8 +112,9 @@
                 </div>
             </div>
         </section>
+        </div>
 
-        <section class="values">
+        <section class="values sticky-item">
             <div class="values-container">
                 <div class="values-header">
                     <h2 class="section-heading">Unsere Werte – das macht uns aus</h2>
@@ -175,6 +178,7 @@
                 </div>
             </div>
         </section>
+        </div>
 
         <section class="testimonials">
             <div class="testimonials-container">
@@ -462,7 +466,10 @@
 
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
+
+        
     </script>
+    
 </body>
 
 </html>
