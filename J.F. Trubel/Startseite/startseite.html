@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lüftung Heizung Sanitär</title>
+  <style>
+    /* Basis-Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #c0c5fe;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 5%;
+      position: absolute;
+      width: 100%;
+      z-index: 10;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #333;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: #666;
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background-color: #a2b5ff;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    /* Text-Highlight Bereich */
+    .heading-wrapper {
+      display: flex;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .hero h2 {
+      font-size: 3.4rem;
+      font-weight: 700;
+      color: #333;
+      line-height: 1.2;
+      margin-right: 0.5rem;
+      white-space: nowrap;
+    }
+    
+    /* Service-Slider: Container zeigt nur ein Element */
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      overflow: hidden;
+      /* Höhe wird dynamisch in JS gesetzt */
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    /* Einzelne Service-Items */
+    .service-item {
+      font-size: 3.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #7a7d9b;
+      opacity: 0.6;
+      transition: opacity 0.4s ease-in-out, color 0.4s ease-in-out;
+    }
+    /* Aktives Element */
+    .service-item.active {
+      color: #333;
+      opacity: 1;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: #555;
+      max-width: 600px;
+      margin: 1rem 0 2rem;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .cta-button svg {
+      margin-left: 0.5rem;
+    }
+    
+    /* Wellen-Animation (unverändert) */
+    .wave-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    .wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      opacity: 0.3;
+      transform-origin: center;
+      --translateX: 0px;
+      --translateY: 0px;
+      --scale: 1;
+    }
+    .wave-1 {
+      background: radial-gradient(circle at center, transparent 1%, #e6e0d8 70%);
+      animation: rotate 45s linear infinite;
+    }
+    .wave-2 {
+      background: radial-gradient(circle at center, transparent 1%, #d4cbc0 70%);
+      animation: rotate 30s linear infinite reverse;
+    }
+    .wave-3 {
+      background: radial-gradient(ellipse at center, transparent 1%, #e0d8cc 70%);
+      animation: rotate 35s linear infinite;
+      --scale: 1.1;
+    }
+    @keyframes rotate {
+      from {
+        transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(0deg);
+      }
+      to {
+        transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(360deg);
+      }
+    }
+    
+    /* Responsivität */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero h2 {
+        font-size: 2.5rem;
+      }
+      .service-item {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#" class="logo">KLIMA<span style="font-weight: 400;">meister</span></a>
+    <nav class="nav-links">
+      <a href="#">Leistungen</a>
+      <a href="#">Über uns</a>
+      <a href="#">Referenzen</a>
+      <a href="#">Kontakt</a>
+    </nav>
+  </header>
+  
+  <section class="hero">
+    <div class="wave-container">
+      <div class="wave wave-1"></div>
+      <div class="wave wave-2"></div>
+      <div class="wave wave-3"></div>
+    </div>
+    
+    <div class="hero-content">
+      <h1>Willkommen bei J.F. Trubel</h1>
+      <div class="heading-wrapper">
+        <h2>Wir kümmern uns um Ihre:</h2>
+        <!-- Slider-Container: Hier werden nacheinander die Service-Items angezeigt -->
+        <div class="service-list">
+          <div class="service-item">Lüftung</div>
+          <div class="service-item">Heizung</div>
+          <div class="service-item">Sanitär</div>
+          <div class="service-item">Klima</div>
+        </div>
+      </div>
+      <p>Professionelle Lüftungs-, Heizungs- und Sanitärtechnik für maximalen Wohnkomfort und Energieeffizienz. Vertrauen Sie auf 25 Jahre Erfahrung.</p>
+      <a href="#kontakt" class="cta-button">
+        Jetzt Beratung vereinbaren
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* --- Parallax für die Wellen --- */
+      const waves = document.querySelectorAll('.wave');
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = (e.clientX / window.innerWidth) - 0.5;
+        const mouseY = (e.clientY / window.innerHeight) - 0.5;
+        waves.forEach((wave, index) => {
+          const factor = (index + 1) * 15;
+          wave.style.setProperty('--translateX', `${mouseX * factor}px`);
+          wave.style.setProperty('--translateY', `${mouseY * factor}px`);
+        });
+      });
+      
+      /* --- Service-Slider --- */
+      const serviceList = document.querySelector('.service-list');
+      const serviceItems = document.querySelectorAll('.service-item');
+      let currentIndex = 0;
+      const intervalTime = 2500;
+      
+      // Containerhöhe anhand des ersten Items messen und setzen
+      function updateContainerHeight() {
+        const itemHeight = serviceItems[0].getBoundingClientRect().height;
+        serviceList.style.height = `${itemHeight}px`;
+        return itemHeight;
+      }
+      
+      let itemHeight = updateContainerHeight();
+      
+      // Slider-Funktion: Hebt das aktuelle Item hervor und verschiebt den Container
+      function updateSlider() {
+        serviceItems.forEach(item => item.classList.remove('active'));
+        serviceItems[currentIndex].classList.add('active');
+        serviceList.style.transform = `translateY(-${currentIndex * itemHeight}px)`;
+        currentIndex = (currentIndex + 1) % serviceItems.length;
+      }
+      
+      // Erstes Update sofort
+      updateSlider();
+      // Slider-Animation starten
+      setInterval(updateSlider, intervalTime);
+      
+      // Responsives Anpassen bei Fenstergrößenänderung
+      window.addEventListener('resize', () => {
+        itemHeight = updateContainerHeight();
+        // Den zuletzt aktiven Index berechnen
+        const activeIndex = (currentIndex === 0) ? serviceItems.length - 1 : currentIndex - 1;
+        serviceList.style.transform = `translateY(-${activeIndex * itemHeight}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
