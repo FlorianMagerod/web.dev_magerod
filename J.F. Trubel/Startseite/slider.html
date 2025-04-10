@@ -1,51 +1,21 @@
-<head>
-    <style>
+<!DOCTYPE html>
+<html lang="de">
 
-        .has-global-padding{
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.F. Trubel - Services</title>
+    <style>
+        .has-global-padding {
             padding-left: 0 !important;
             padding-right: 0 !important;
         }
+
         /* Reset und Basis-Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            
-        }
-
-        /* Header */
-        /*header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            position: absolute;
-            width: 100%;
-            z-index: 10;
-
-        }*/
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #666;
         }
 
         /* Hero Section */
@@ -80,7 +50,7 @@
         .heading-wrapper {
             display: flex;
             flex-direction: row;
-            align-items: baseline;
+            align-items: center; /* Wichtig für die Ausrichtung */
             margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
@@ -95,27 +65,38 @@
             white-space: nowrap;
         }
 
-        /* Container für die Service-Items (alle werden sichtbar angezeigt) */
+        /* NEU: Wrapper für die Service-Liste */
+        .service-list-wrapper {
+            display: inline-block; /* Bleibt neben h2 */
+            vertical-align: baseline; /* Ausrichtung an h2 */
+            overflow: hidden; /* Versteckt Items außerhalb dieses Bereichs */
+            position: relative; /* Bezugspunkt für die absolute Liste, falls benötigt (hier nicht) */
+        }
+
+        /* Container für die Service-Items (wird verschoben) */
         .service-list {
-            display: flex;
-            flex-direction: column;
+            /* display: flex; flex-direction: column; - Nicht mehr nötig, Block-Elemente sind standardmäßig untereinander */
+            transition: transform 0.5s ease-in-out; /* Animation für die Verschiebung */
+             /* Wichtig: Kein explizites display: flex nötig, da divs block-level sind */
+             margin-top: 200px;
         }
 
         /* Jedes Service-Item */
         .service-item {
             font-size: 3.4rem;
             font-weight: 700;
-            line-height: 1.2;
-            color: #7a7d9b;
-            opacity: 0.6;
-            transition: opacity 0.4s ease-in-out, color 0.4s ease-in-out, transform 0.4s ease-in-out;
+            line-height: 1.2; /* Wichtig für Höhenberechnung und Wrapper-Höhe */
+            color: #7a7d9b; /* Farbe für nicht-aktive */
+            opacity: 0.6; /* Opazität für nicht-aktive */
+            transition: opacity 0.4s ease-in-out, color 0.4s ease-in-out;
+            white-space: nowrap; /* Verhindert Umbruch innerhalb eines Items */
         }
 
         /* Hervorgehobenes (aktives) Item */
         .service-item.active {
-            color: #333;
-            opacity: 1;
-            transform: translateY(-5px);
+            color: #333; /* Farbe für aktive */
+            opacity: 1; /* Volle Opazität für aktive */
+            /* transform: translateY(-5px); Entfernt, da die Liste verschoben wird */
         }
 
         .hero p {
@@ -146,85 +127,31 @@
             margin-left: 0.5rem;
         }
 
-        /* Wellen-Animation (optional, unverändert) */
+        /* Wellen-Animation (unverändert) */
         .wave-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; z-index: 1;
         }
-
         .wave-container svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            position: absolute; top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            /* Der Maskierungseffekt blendet den oberen Bereich sanft aus.
-       Hier startet der Verlauf oben (transparent) und wird ab ca. 40% in volle Deckkraft (schwarz) übergehen. */
             mask-image: linear-gradient(to bottom, transparent, black 90%);
             -webkit-mask-image: linear-gradient(to bottom, transparent, black 90%);
         }
-
-        .wave {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            top: -50%;
-            left: -50%;
-            opacity: 0.3;
-            transform-origin: center;
-            --translateX: 0px;
-            --translateY: 0px;
-            --scale: 1;
-        }
-
-        .wave-1 {
-            background: radial-gradient(circle at center, transparent 1%, #e6e0d8 70%);
-            animation: rotate 45s linear infinite;
-        }
-
-        .wave-2 {
-            background: radial-gradient(circle at center, transparent 1%, #d4cbc0 70%);
-            animation: rotate 30s linear infinite reverse;
-        }
-
-        .wave-3 {
-            background: radial-gradient(ellipse at center, transparent 1%, #e0d8cc 70%);
-            animation: rotate 35s linear infinite;
-            --scale: 1.1;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(0deg);
-            }
-
-            to {
-                transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(360deg);
-            }
-        }
+        .wave { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; opacity: 0.3; transform-origin: center; --translateX: 0px; --translateY: 0px; --scale: 1; }
+        .wave-1 { background: radial-gradient(circle at center, transparent 1%, #e6e0d8 70%); animation: rotate 45s linear infinite; }
+        .wave-2 { background: radial-gradient(circle at center, transparent 1%, #d4cbc0 70%); animation: rotate 30s linear infinite reverse; }
+        .wave-3 { background: radial-gradient(ellipse at center, transparent 1%, #e0d8cc 70%); animation: rotate 35s linear infinite; --scale: 1.1; }
+        @keyframes rotate { from { transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(0deg); } to { transform: translate(var(--translateX), var(--translateY)) scale(var(--scale)) rotate(360deg); } }
 
         /* Responsivität */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-
-            .service-item {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-                margin-top: 0.5rem;
-            }
+            .hero h1 { font-size: 1.8rem; }
+            .hero h2 { font-size: 2.5rem; }
+            .service-item { font-size: 2.5rem; }
+            /* Wrapper Höhe muss auch angepasst werden */
+             .service-list-wrapper { height: 1.2em; } /* Behält relative Höhe bei */
+            .hero p { font-size: 1rem; margin-top: 0.5rem; }
         }
     </style>
 </head>
@@ -232,43 +159,23 @@
 <body>
     <section class="hero">
         <div class="wave-container">
-            <svg width="1040" height="100%" viewBox="0 0 1040 746" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="520" cy="520" r="359" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="379" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="399" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="419" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="439" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="459" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="479" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="499" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="519" stroke="#F2F2F2" stroke-width="2" />
-                <circle opacity="0.8" cx="520" cy="520" r="519" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="339" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="319" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="299" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="279" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="259" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="239" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="219" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="199" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="179" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="159" stroke="#F2F2F2" stroke-width="2" />
-                <circle cx="520" cy="520" r="139" stroke="#F2F2F2" stroke-width="2" />
-            </svg>
-
-            <div class="wave wave-1"></div>
-            <div class="wave wave-2"></div>
-            <div class="wave wave-3"></div>
+            <!-- SVG und Wellen unverändert -->
+            <svg width="1040" height="100%" viewBox="0 0 1040 746" fill="none" xmlns="http://www.w3.org/2000/svg"> <circle cx="520" cy="520" r="359" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="379" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="399" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="419" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="439" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="459" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="479" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="499" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="519" stroke="#F2F2F2" stroke-width="2"/><circle opacity="0.8" cx="520" cy="520" r="519" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="339" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="319" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="299" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="279" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="259" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="239" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="219" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="199" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="179" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="159" stroke="#F2F2F2" stroke-width="2"/><circle cx="520" cy="520" r="139" stroke="#F2F2F2" stroke-width="2"/> </svg>
+            <div class="wave wave-1"></div> <div class="wave wave-2"></div> <div class="wave wave-3"></div>
         </div>
         <div class="hero-content">
             <h1>Willkommen bei J.F. Trubel</h1>
             <div class="heading-wrapper">
                 <h2>Wir kümmern uns um Ihre:</h2>
-                <div class="service-list">
-                    <div class="service-item">Lüftung</div>
-                    <div class="service-item">Heizung</div>
-                    <div class="service-item">Sanitär</div>
-                    <div class="service-item">Klima</div>
+                <!-- NEU: Wrapper hinzugefügt -->
+                <div class="service-list-wrapper">
+                     <!-- Originale Liste bleibt hier drin -->
+                    <div class="service-list">
+                        <div class="service-item">Lüftung</div>
+                        <div class="service-item">Heizung</div>
+                        <div class="service-item">Sanitär</div>
+                        <div class="service-item">Klima</div>
+                    </div>
                 </div>
             </div>
             <p>
@@ -277,30 +184,53 @@
             </p>
             <a href="#kontakt" class="cta-button">
                 Jetzt Beratung vereinbaren
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12h14"></path>
-                    <path d="m12 5 7 7-7 7"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M5 12h14"></path> <path d="m12 5 7 7-7 7"></path> </svg>
             </a>
         </div>
     </section>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const serviceList = document.querySelector('.service-list');
             const serviceItems = document.querySelectorAll('.service-item');
             let currentIndex = 0;
-            const intervalTime = 2500;
+            const intervalTime = 2500; // Zeit zwischen den Wechseln
+            let itemHeight = 0; // Wird nach dem Laden berechnet
 
-            function updateSlider() {
-                serviceItems.forEach(item => item.classList.remove('active'));
+            if (serviceItems.length > 0) {
+                // Berechne die Höhe des ersten Items, nachdem es gerendert wurde
+                 // Wichtig: Stelle sicher, dass das CSS geladen ist und das Element sichtbar ist.
+                 // offsetHeight beinhaltet Padding und Border, aber nicht Margin.
+                itemHeight = serviceItems[0].offsetHeight;
+
+                // Setze das erste Item initial als aktiv
                 serviceItems[currentIndex].classList.add('active');
-                currentIndex = (currentIndex + 1) % serviceItems.length;
-            }
 
-            updateSlider(); // Start sofort
-            setInterval(updateSlider, intervalTime);
+                function updateSlider() {
+                    // Entferne 'active' vom aktuellen Item
+                    serviceItems[currentIndex].classList.remove('active');
+
+                    // Gehe zum nächsten Index (Schleife)
+                    currentIndex = (currentIndex + 1) % serviceItems.length;
+
+                    // Berechne die notwendige vertikale Verschiebung
+                    const translateY = -currentIndex * itemHeight;
+
+                    // Wende die Transformation auf die gesamte Liste an
+                    serviceList.style.transform = `translateY(${translateY}px)`;
+
+                    // Füge 'active' zum neuen aktuellen Item hinzu
+                    serviceItems[currentIndex].classList.add('active');
+                }
+
+                // Starte das Intervall nur, wenn es mehr als ein Item gibt
+                if (serviceItems.length > 1) {
+                    setInterval(updateSlider, intervalTime);
+                }
+            } else {
+                console.warn("Keine .service-item Elemente gefunden.");
+            }
         });
     </script>
 </body>
-
 </html>
